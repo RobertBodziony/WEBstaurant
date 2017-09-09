@@ -1,12 +1,15 @@
 package com.keczaps.webstaurant.user;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.List;
+import java.util.Map;
 
 @Data
 @Document(collection = "users")
@@ -17,6 +20,7 @@ public class User implements UserDetails {
 
     private Collection<SimpleGrantedAuthority> authorities;
 
+    @NotBlank
     private String username;
 
     private String password;
@@ -33,8 +37,9 @@ public class User implements UserDetails {
 
     private String lastName;
 
-    private Rank rank;
+    private Rank userRank;
 
+    @NotBlank
     private String email;
 
     public enum Rank{
@@ -52,5 +57,14 @@ public class User implements UserDetails {
         }
 
     }
+
+    /*public void setAuthorities(List<Map<String,String>> authorities){
+        for (Map<String,String> authority : authorities) {
+            if (authority.containsKey("role"))
+                this.authorities.add(new SimpleGrantedAuthority(authority.get("role")));
+            else
+                this.authorities.add(new SimpleGrantedAuthority(authority.get("authority")));
+        }
+    }*/
 
 }

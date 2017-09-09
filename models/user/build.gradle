@@ -1,4 +1,3 @@
 dependencies{
-    compileOnly('org.springframework.security.oauth:spring-security-oauth2:2.2.0.RELEASE')
     compileOnly('org.springframework.boot:spring-boot-starter-data-mongodb')
 }
