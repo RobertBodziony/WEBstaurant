@@ -2,6 +2,10 @@
 /build/
 !gradle/wrapper/gradle-wrapper.jar
 
+/storage/dataapi/config
+/services/restapi/config
+/services/webapplication/config
+
 ### STS ###
 .apt_generated
 .classpath
