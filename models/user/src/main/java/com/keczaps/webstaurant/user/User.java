@@ -2,14 +2,17 @@ package com.keczaps.webstaurant.user;
 
 import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 @Data
 @Document(collection = "users")
@@ -42,13 +45,19 @@ public class User implements UserDetails {
     @NotBlank
     private String email;
 
+    @CreatedDate
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    private LocalDateTime createdAt;
+
+    private List<String> orders;
+
     public enum Rank{
 
-        FLAVOR_AMATOUR("Amator smaków"),
-        HUNGRY_WOLF("Głodny wilk"),
-        MYSTERIOUS_GOURMENT("Mistyczny smakosz"),
-        GASTRONOMIC_MASTER("Gastronomiczny mistrz"),
-        FLAVOR_CONNOISSEUR("Koneser smaków");
+        FLAVOR_AMATOUR("Flavor_amatour"),
+        HUNGRY_WOLF("Hungry_Wolf"),
+        MYSTERIOUS_GOURMENT("Mysterious_gourment"),
+        GASTRONOMIC_MASTER("Gastronomic_master"),
+        FLAVOR_CONNOISSEUR("Flavour_connoisseur");
 
         String rank;
 
@@ -57,14 +66,5 @@ public class User implements UserDetails {
         }
 
     }
-
-    /*public void setAuthorities(List<Map<String,String>> authorities){
-        for (Map<String,String> authority : authorities) {
-            if (authority.containsKey("role"))
-                this.authorities.add(new SimpleGrantedAuthority(authority.get("role")));
-            else
-                this.authorities.add(new SimpleGrantedAuthority(authority.get("authority")));
-        }
-    }*/
 
 }

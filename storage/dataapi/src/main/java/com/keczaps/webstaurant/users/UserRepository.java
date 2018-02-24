@@ -1,4 +1,4 @@
-package com.keczaps.webstaurant.dataapi.users;
+package com.keczaps.webstaurant.users;
 
 import com.keczaps.webstaurant.user.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
