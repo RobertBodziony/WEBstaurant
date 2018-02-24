@@ -2,7 +2,9 @@ package com.keczaps.webstaurant.dataapi.users;
 
 import com.keczaps.webstaurant.dataapi.configuration.DataApiConfiguration;
 import com.keczaps.webstaurant.user.User;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -14,44 +16,47 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class UserController {
 
     private final MongoTemplate mongoTemplate;
     private final UserRepository userRepository;
 
-    @Autowired
-    public UserController(UserRepository userRepository, MongoTemplate mongoTemplate) {
-        this.userRepository = userRepository;
-        this.mongoTemplate = mongoTemplate;
-    }
-
-    @RequestMapping(path = "/users", method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity getUsers() {
+    @GetMapping(path = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity getUsers(Sort sort) {
         List<User> users = userRepository.findAll();
-        if (users.isEmpty()) users = new ArrayList<User>();
-        return new ResponseEntity(users, HttpStatus.OK);
+        return ResponseEntity.ok(users);
     }
 
-    @RequestMapping(path = "/users/{id}", method = RequestMethod.GET,
-            produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path = "/users/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getUser(@PathVariable("id") String id) {
         User user = userRepository.findOne(id);
         if (user == null) {
-            return new ResponseEntity(HttpStatus.NOT_FOUND);
+            return ResponseEntity.notFound().build();
         }
-        return new ResponseEntity(user, HttpStatus.OK);
+        return ResponseEntity.ok(user);
     }
 
-    @RequestMapping(path = "/users", method = RequestMethod.POST,
-            produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(path = "/users", produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity createUser(@RequestBody User user) {
         user.setId(UUID.randomUUID().toString());
         userRepository.save(user);
-        return new ResponseEntity(user, HttpStatus.CREATED);
+        return ResponseEntity.ok(user);
     }
 
-    // TODO - HTTP METHOD PUT for updating the user
+    @PutMapping(path = "/users", produces = MediaType.APPLICATION_JSON_VALUE,
+            consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity updateUser(@RequestBody User user) {
+        User userMongoInstance = userRepository.findOne(user.getId());
+        if (userMongoInstance == null) {
+            return ResponseEntity.notFound().build();
+        }
+        // TODO - user validation
+        userMongoInstance = user;
+        userRepository.save(userMongoInstance);
+        return new ResponseEntity(user, HttpStatus.CREATED);
+    }
 
     @RequestMapping(path = "/users/{id}", method = RequestMethod.DELETE,
             produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
