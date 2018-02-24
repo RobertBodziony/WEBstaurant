@@ -4,4 +4,8 @@ server:
 spring:
   data:
     mongodb:
-     uri: mongodb://localhost:27017/webstaurantDB
+     database: webstaurant
+     host: localhost
+#     password: admin
+#     username: admin
+     port: 27017

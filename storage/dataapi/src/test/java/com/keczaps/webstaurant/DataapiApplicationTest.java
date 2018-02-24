@@ -2,7 +2,7 @@ package com.keczaps.webstaurant;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import com.keczaps.webstaurant.users.UserController;
+import com.keczaps.webstaurant.users.UsersController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class DataapiApplicationTest {
 
     @Autowired
-    private UserController userController;
+    private UsersController userController;
 
     @Test
     public void contextLoads() throws Exception {
