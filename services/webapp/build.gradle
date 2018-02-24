@@ -1,0 +1,8 @@
+dependencies {
+    compile project (':models:ingredient')
+    compile project (':models:user')
+    compile project (':models:order')
+    compile project (':models:product')
+    compile('org.springframework.boot:spring-boot-starter-data-rest')
+    compile('org.springframework.boot:spring-boot-starter-web')
+}
