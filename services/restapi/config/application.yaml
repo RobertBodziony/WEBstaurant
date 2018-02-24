@@ -1,6 +1,6 @@
 server:
-  port: 8100
+  port: 8010
 
 
 rest-api:
-  data-api-url: http://localhost:8200
+  data-api-url: http://localhost:8100

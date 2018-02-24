@@ -1,0 +1,5 @@
+server:
+  port: 8001
+
+web-app:
+  rest-api-url: http://localhost:8010
