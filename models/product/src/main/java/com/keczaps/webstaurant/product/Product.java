@@ -39,12 +39,12 @@ public class Product {
 
     private enum Size{
 
-        BABY("Bambino"),
-        SMALL("Mały"),
+        BABY("Baby"),
+        SMALL("Small"),
         SENIOR("Senior"),
-        MEDIUM("Średni"),
-        BIG("Wielki"),
-        SUPER_HUNGRY("Super głodny");
+        MEDIUM("Medium"),
+        BIG("Big"),
+        SUPER_HUNGRY("Super_hungry");
 
         private String type;
 

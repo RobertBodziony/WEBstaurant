@@ -19,10 +19,10 @@ public class Ingredient {
 
     public enum IngredientType{
 
-        SAUCE("Sos"),
-        MEAT("Mięso"),
-        VEGETABLE("Warzywa"),
-        CHEESE("Ser");
+        SAUCE("Sauce"),
+        MEAT("Meat"),
+        VEGETABLE("vegetable"),
+        CHEESE("cheese");
 
         private String type;
 

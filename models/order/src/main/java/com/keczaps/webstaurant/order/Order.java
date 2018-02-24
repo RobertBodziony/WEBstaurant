@@ -4,8 +4,11 @@ import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 @Data
 @Document(collection = "order")
@@ -19,6 +22,7 @@ public class Order {
     private Integer tableNumber;
 
     @CreatedDate
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDateTime createdAt;
 
     private State state;
@@ -27,12 +31,12 @@ public class Order {
 
     public enum State{
 
-        UNCONFIRMED("Niepotwierdzone"),
-        CONFIRMED("Potwierdzone"),
-        IN_PROGRESS("W trakcie realizacji"),
-        READY_TO_SERVE("Gotowe do wydania"),
-        SERVER("Wydane"),
-        COMPLETED("Zakończone");
+        UNCONFIRMED("Unconfirmed"),
+        CONFIRMED("Confirmed"),
+        IN_PROGRESS("In_progress"),
+        READY_TO_SERVE("Ready_to_serve"),
+        SERVED("Served"),
+        COMPLETED("Completed");
 
         private String state;
 

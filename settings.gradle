@@ -1,1 +1,7 @@
-include ":services:restapi", ":storage:dataapi", ":webapp:webapplication", ":models:user", ":models:userorders", ":models:product", ":models:order", ":models:ingredient"
+include ":services:restapi"
+include ":storage:dataapi"
+include ":webapp:webapplication"
+include ":models:user"
+include ":models:product"
+include ":models:order"
+include ":models:ingredient"

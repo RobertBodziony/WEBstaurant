@@ -1,4 +1,8 @@
 dependencies {
     compile project(':models:user')
+    compile project(':models:product')
+    compile project(':models:order')
+    compile project(':models:ingredient')
     compile('org.springframework.boot:spring-boot-starter-data-mongodb')
+    compile('commons-lang:commons-lang:2.6')
 }
