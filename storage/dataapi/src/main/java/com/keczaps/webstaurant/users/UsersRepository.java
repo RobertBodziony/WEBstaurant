@@ -5,5 +5,5 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @EnableMongoRepositories
-public interface UserRepository extends MongoRepository<User,String> {
+public interface UsersRepository extends MongoRepository<User,String> {
 }

@@ -22,7 +22,7 @@ public class Order {
     private Integer tableNumber;
 
     @CreatedDate
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(style="MM/dd/yyyy")
     private LocalDateTime createdAt;
 
     private State state;

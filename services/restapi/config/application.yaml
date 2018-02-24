@@ -1,2 +1,6 @@
 server:
   port: 8100
+
+
+rest-api:
+  data-api-url: http://localhost:8200

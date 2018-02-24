@@ -5,7 +5,6 @@ import com.keczaps.webstaurant.user.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -13,16 +12,14 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
 @RestController
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class UserController {
+public class UsersController {
 
-    private final UserRepository userRepository;
+    private final UsersRepository userRepository;
 
     @GetMapping(path = "/users", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity getUsers(Sort sort) {
@@ -61,7 +58,6 @@ public class UserController {
         if (userMongoInstance == null) {
             return ResponseEntity.notFound().build();
         }
-        // TODO - user validation - REST API
         userMongoInstance = user;
         userRepository.save(userMongoInstance);
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
