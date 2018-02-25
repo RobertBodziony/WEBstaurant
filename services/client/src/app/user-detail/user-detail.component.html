@@ -1,4 +1,5 @@
 <div *ngIf="user">
+  <button (click)="goBack()">go back</button>
   <h2>{{ user.username | uppercase }} Details</h2>
   <div><span>id: </span>{{user.id}}</div>
   <div><span>username: </span>{{user.username}}</div>

@@ -2,6 +2,7 @@ package com.keczaps.webstaurant.users;
 
 import com.google.common.collect.Lists;
 import com.keczaps.webstaurant.user.User;
+import com.keczaps.webstaurant.user.User.Rank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -12,6 +13,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.UUID;
 
@@ -39,14 +41,16 @@ public class UsersController {
     @PostMapping(path = "/users", produces = MediaType.APPLICATION_JSON_VALUE,
             consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity createUser(@RequestBody User user) {
+        LinkedHashMap<String,String> authorities = new LinkedHashMap<>();
+        authorities.put("authority","ROLE_USER");
         user.setId(UUID.randomUUID().toString());
         user.setAccountNonExpired(true);
         user.setAccountNonLocked(true);
         user.setCredentialsNonExpired(true);
         user.setEnabled(true);
         user.setCreatedAt(LocalDateTime.now());
-        user.setAuthorities(Lists.newArrayList(new SimpleGrantedAuthority("ROLE_USER")));
-        user.setUserRank(User.Rank.FLAVOR_AMATOUR);
+        user.setAuthorities(Lists.newArrayList(authorities));
+        user.setUserRank(Rank.FLAVOR_AMATOUR);
         userRepository.save(user);
         return ResponseEntity.ok(user);
     }

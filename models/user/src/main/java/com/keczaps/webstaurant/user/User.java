@@ -1,5 +1,8 @@
 package com.keczaps.webstaurant.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.google.common.collect.Lists;
 import lombok.Data;
 import org.hibernate.validator.constraints.NotBlank;
 import org.springframework.data.annotation.CreatedDate;
@@ -9,13 +12,18 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 @Data
 @Document(collection = "users")
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonDeserialize(as = User.class)
 public class User implements UserDetails {
 
     @Id
@@ -67,4 +75,10 @@ public class User implements UserDetails {
 
     }
 
+    public void setAuthorities(Collection<LinkedHashMap<String,String>> authorities){
+        this.authorities = Lists.newArrayList();
+        for (LinkedHashMap<String,String> authority : authorities){
+            this.authorities.add(new SimpleGrantedAuthority(authority.get("authority")));
+        }
+    }
 }

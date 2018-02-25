@@ -1,6 +1,7 @@
 package com.keczaps.webstaurant.users;
 
 import com.keczaps.webstaurant.user.User;
+import com.keczaps.webstaurant.user.User.Rank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.web.config.EnableSpringDataWebSupport;
@@ -15,6 +16,7 @@ import javax.websocket.server.PathParam;
 @RestController
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @EnableSpringDataWebSupport
+@CrossOrigin(origins = "http://localhost:4200")
 public class UsersController {
 
     private final UsersService usersService;
