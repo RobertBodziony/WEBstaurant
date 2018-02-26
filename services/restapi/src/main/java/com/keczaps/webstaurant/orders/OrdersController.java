@@ -26,7 +26,7 @@ public class OrdersController {
 
   //    @Secured("ROLE_USER")
   @GetMapping(path = "/orders/{id}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-  private ResponseEntity getOrder(@PathParam("id") String id) {
+  private ResponseEntity getOrder(@PathVariable("id") String id) {
     return ordersService.getOrder(id);
   }
 

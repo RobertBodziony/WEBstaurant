@@ -1,1 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+.background-webstaurant-color {
+  width: 100%;
+  height: 100%;
+  background-color: #d1d8e0;
+}
+
+.navbar-webstaurant-color {
+  background-color: #4b4b4b;
+}
+
+.footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  line-height: 40px;
+  background-color: #4b4b4b;
+}

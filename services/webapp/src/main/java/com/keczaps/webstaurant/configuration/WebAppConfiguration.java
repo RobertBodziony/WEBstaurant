@@ -3,15 +3,22 @@ package com.keczaps.webstaurant.configuration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.validation.groups.ConvertGroup;
 
 @Configuration
-public class WebAppConfiguration {
+public class WebAppConfiguration extends WebMvcConfigurerAdapter {
 
   @Bean
-  public RestTemplate restTemplate(RestTemplate restTemplate) {
-    return restTemplate;
+  public RestTemplate restTemplate() {
+    return new RestTemplate();
+  }
+
+  @Override
+  public void addCorsMappings(CorsRegistry registry) {
+    registry.addMapping("/**");
   }
 
 }

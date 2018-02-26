@@ -24,7 +24,7 @@ public class OrdersController {
   }
 
   @GetMapping(path = "/orders/{id}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-  private ResponseEntity getOrder(@PathParam("id") String id) {
+  private ResponseEntity getOrder(@PathVariable("id") String id) {
     return ordersService.getOrder(id);
   }
 

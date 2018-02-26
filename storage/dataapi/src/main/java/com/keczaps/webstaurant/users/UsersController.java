@@ -67,7 +67,7 @@ public class UsersController {
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
     }
 
-    @DeleteMapping(path = "/users/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(path = "/users/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity deleteUser(@PathVariable("id") String id) {
         User user = userRepository.findOne(id);
         if (user == null){

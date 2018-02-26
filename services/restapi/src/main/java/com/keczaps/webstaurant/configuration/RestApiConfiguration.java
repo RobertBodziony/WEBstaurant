@@ -10,11 +10,12 @@ import org.springframework.hateoas.hal.Jackson2HalModule;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
 import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.util.Properties;
 
 @Configuration
-public class RestApiConfiguration {
+public class RestApiConfiguration extends WebMvcConfigurerAdapter {
 
     @Bean
     public RestTemplate restTemplate() {

@@ -12,6 +12,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { MessageService } from './services/message/message.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { UserCreateComponent } from './user-create/user-create.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     UsersComponent,
     UserDetailComponent,
     MessagesComponent,
-    DashboardComponent
+    DashboardComponent,
+    UserCreateComponent
   ],
   imports: [
     BrowserModule,

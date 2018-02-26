@@ -1,10 +1,25 @@
-<div>
-  <h2> My Users </h2>
-  <ul class="users">
-    <li *ngFor="let user of users">
-     <a routerLink="/users/{{user.id}}">
-      <span class="badge">{{ user.id }}</span> {{user.username}}
-     </a>
-    </li>
-  </ul>
+<div class="row">
+  <div class="box col-md-12 align-content-center">
+    <div class="box-body">
+      <h2 class="m-2"> Users List </h2>
+      <table class="text-center table">
+        <thead>
+        <tr>
+          <th>Username</th>
+          <th>Email</th>
+          <th>First name</th>
+          <th>Last name</th>
+          <th></th>
+        </tr>
+        <tr *ngFor="let user of users">
+          <td>{{user.username}}</td>
+          <td>{{user.email}}</td>
+          <td>{{user.firstName}}</td>
+          <td>{{user.lastName}}</td>
+          <td><button class="btn-outline-danger small" (click)="deleteUser(user.id)">DELETE</button></td>
+        </tr>
+        </thead>
+      </table>
+    </div>
+  </div>
 </div>

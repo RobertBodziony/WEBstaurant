@@ -12,11 +12,12 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.websocket.server.PathParam;
+import javax.xml.ws.Response;
 
 @RestController
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 @EnableSpringDataWebSupport
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:8001")
 public class UsersController {
 
     private final UsersService usersService;
@@ -28,8 +29,8 @@ public class UsersController {
     }
 
 //    @Secured("ROLE_USER")
-    @GetMapping(path = "/users/{id}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    private ResponseEntity getUser(@PathParam("id") String id) {
+    @GetMapping(path = "/users/{id}", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    private ResponseEntity getUser(@PathVariable("id") String id) {
       return usersService.getUser(id);
     }
 

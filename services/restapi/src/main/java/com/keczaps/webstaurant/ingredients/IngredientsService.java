@@ -62,7 +62,7 @@ public class IngredientsService {
 
   public ResponseEntity deleteIngredient(String id) {
     URI uri = UriComponentsBuilder.fromUriString(restApiProperties.getDataApiUrl())
-            .pathSegment(INGREDIENTS_PATH)
+            .pathSegment(INGREDIENTS_PATH,id)
             .build().toUri();
 
     return restTemplate.exchange(uri, HttpMethod.DELETE, HttpEntity.EMPTY, Ingredient.class);

@@ -54,7 +54,7 @@ public class User implements UserDetails {
     private String email;
 
     @CreatedDate
-    @DateTimeFormat(style="MM/dd/yyyy")
+    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime createdAt;
 
     private List<String> orders;

@@ -1,10 +1,26 @@
-<h1>{{ title }}!</h1>
-<nav>
-  <a routerLink="/dashboard">DASHBOARD</a>
-  <a routerLink="/users">USERS</a>
-</nav>
-<router-outlet></router-outlet>
-<app-messages></app-messages>
+<div class="container">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="/">WebStaurant</a>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item text-nowrap"><a class="nav-link" routerLink="/dashboard">Dashboard</a></li>
+        <li class="nav-item text-nowrap"><a class="nav-link" routerLink="/users">Users</a></li>
+      </ul>
+      <ul class="navbar-nav mr-2">
+        <li class="nav-item text-nowrap">
+          <a class="nav-link" href="/">Sign out</a>
+        </li>
+      </ul>
+    </nav>
 
+    <main role="main" class="container" style="padding-top: 60px">
+      <router-outlet></router-outlet>
+    </main>
+
+</div>
+<footer class="footer">
+  <div class="container text-center">
+    <span class="text-muted">WebStaurant.</span>
+  </div>
+</footer>
 
 
