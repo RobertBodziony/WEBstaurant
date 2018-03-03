@@ -21,6 +21,8 @@ public class Order {
 
     private Integer tableNumber;
 
+    private Integer price;
+
     @CreatedDate
     @DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime createdAt;

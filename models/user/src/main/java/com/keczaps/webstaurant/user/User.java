@@ -23,7 +23,6 @@ import java.util.Map;
 @Data
 @Document(collection = "users")
 @JsonIgnoreProperties(ignoreUnknown = true)
-@JsonDeserialize(as = User.class)
 public class User implements UserDetails {
 
     @Id
@@ -77,6 +76,9 @@ public class User implements UserDetails {
 
     public void setAuthorities(Collection<LinkedHashMap<String,String>> authorities){
         this.authorities = Lists.newArrayList();
+        if (authorities == null) {
+            return;
+        }
         for (LinkedHashMap<String,String> authority : authorities){
             this.authorities.add(new SimpleGrantedAuthority(authority.get("authority")));
         }

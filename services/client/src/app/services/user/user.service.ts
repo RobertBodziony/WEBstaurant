@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { User } from '../../models/user';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
-import { MessageService } from '../message/message.service';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from "@angular/common/http";
 import {catchError} from "rxjs/operators";
 import {ErrorObservable} from "rxjs/observable/ErrorObservable";
@@ -21,49 +20,34 @@ export class UserService {
   private restApiUrl = '//localhost:8010/';
 
   constructor(
-    private messageService: MessageService,
     private http: HttpClient
     ) { }
 
-  getUsers(): Observable<any> {
+  getUsers(): Observable<User[]> {
     console.log('UserService - fetching all users.');
-    return this.http.get(this.restApiUrl + this.usersUrl ).pipe(
-      catchError(this.handleError)
-    );
+    return this.http.get<User[]>(this.restApiUrl + this.usersUrl, httpOptions);
   }
 
-  getUser(id: string): Observable<any> {
+  getUser(id: string): Observable<User> {
     console.log(`UserService - fetching user with id = ${id}.`);
-    return this.http.get(this.restApiUrl + this.usersUrl + this.pathSlash +id).pipe(
-      catchError(this.handleError)
-    );
+    return this.http.get<User>(this.restApiUrl + this.usersUrl + this.pathSlash +id, httpOptions);
   }
 
   createUser(user: User): Observable<User> {
     console.log(`UserService - creating user.`);
-    return this.http.post(this.restApiUrl + this.usersUrl, user, httpOptions)
-      .pipe(
-        catchError(this.handleError)
-    );
+    return this.http.post<User>(this.restApiUrl + this.usersUrl, user, httpOptions);
   }
 
-  updateUser(user: User): Observable<any> {
+  updateUser(user: User): Observable<User> {
     console.log(`UserService - updating user with id = ${user.id}.`);
-    return this.http.put(this.restApiUrl + this.usersUrl,user).pipe(
-      catchError(this.handleError)
-    );
+    return this.http.put<User>(this.restApiUrl + this.usersUrl, user, httpOptions);
   }
 
   deleteUser(id: string): Observable<any> {
     console.log(`UserService - deleting user with id = ${id}.`);
-    return this.http.delete(this.restApiUrl + this.usersUrl + this.pathSlash +id).pipe(
-      catchError(this.handleError)
-    );
+    return this.http.delete(this.restApiUrl + this.usersUrl + this.pathSlash +id, httpOptions);
   }
 
-  private log(message: string) {
-    this.messageService.add('UserService: ' + message);
-  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

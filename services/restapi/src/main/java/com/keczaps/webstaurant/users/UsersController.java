@@ -37,14 +37,14 @@ public class UsersController {
 //    @Secured("ROLE_USER")
     @PostMapping(path = "/users", consumes = MediaType.APPLICATION_JSON_UTF8_VALUE,
             produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    private ResponseEntity createUser(@RequestParam User user) {
+    private ResponseEntity createUser(@RequestBody User user) {
       // TODO - validate user
       return usersService.createUser(user);
     }
 
 //    @Secured("ROLE_USER")
     @PutMapping(path = "/users", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    private ResponseEntity updateUser(@RequestParam User user) {
+    private ResponseEntity updateUser(@RequestBody User user) {
       // TODO - validate user
       return usersService.updateUser(user);
     }
