@@ -26,7 +26,7 @@ public class IngredientsController {
 
   //    @Secured("ROLE_USER")
   @GetMapping(path = "/ingredients/{id}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-  private ResponseEntity getIngredient(@PathParam("id") String id) {
+  private ResponseEntity getIngredient(@PathVariable("id") String id) {
     return ingredientsService.getIngredient(id);
   }
 

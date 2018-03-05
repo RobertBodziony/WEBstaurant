@@ -21,8 +21,10 @@ public class Order {
 
     private Integer tableNumber;
 
+    private Integer price;
+
     @CreatedDate
-    @DateTimeFormat(style="MM/dd/yyyy")
+    @DateTimeFormat(iso= DateTimeFormat.ISO.DATE_TIME)
     private LocalDateTime createdAt;
 
     private State state;

@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="box col-12">
+    <div class="row">
+      <div class="col-6">
+        <div class="float-left pl-4">
+          <h2> Users List </h2>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="float-right pr-4">
+        <button class="btn-sm btn-outline-success mt-sm-1" routerLink="/create/user">CREATE</button>
+        </div>
+      </div>
+    </div>
+    <div class="box-body">
+      <table class="text-center table">
+        <thead style="border-top: none">
+          <tr>
+            <th class="th-webst">Username</th>
+            <th class="th-webst">Email</th>
+            <th class="th-webst">First name</th>
+            <th class="th-webst">Last name</th>
+            <th class="th-webst"></th>
+          </tr>
+        </thead>
+        <tr *ngFor="let user of users">
+          <td><a routerLink="/users/{{user.id}}"> {{user.username}} </a></td>
+          <td>{{user.email}}</td>
+          <td>{{user.firstName ? user.firstName : '-'}}</td>
+          <td>{{user.lastName ? user.lastName : '-'}}</td>
+          <td><button class="btn-sm btn-outline-danger" (click)="deleteUser(user.id)">DELETE</button></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

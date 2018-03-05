@@ -28,7 +28,7 @@ public class ProductsController {
 
   //    @Secured("ROLE_USER")
   @GetMapping(path = "/products/{id}",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-  private ResponseEntity getProduct(@PathParam("id") String id) {
+  private ResponseEntity getProduct(@PathVariable("id") String id) {
     return productsService.getProduct(id);
   }
 

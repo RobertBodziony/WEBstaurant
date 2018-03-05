@@ -64,13 +64,12 @@ public class OrdersController {
         if (orderMongoInstance == null) {
             return ResponseEntity.notFound().build();
         }
-        // TODO - product validation - REST API
         orderMongoInstance = order;
         ordersRepository.save(orderMongoInstance);
         return ResponseEntity.ok(order);
     }
 
-    @DeleteMapping(path = "/orders/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(path = "/orders/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity deleteOrders(@PathVariable("id") String id) {
         Order order = ordersRepository.findOne(id);
         if (order == null){

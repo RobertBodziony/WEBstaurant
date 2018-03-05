@@ -48,13 +48,12 @@ public class ProductsController {
         if (productMongoInstance == null) {
             return ResponseEntity.notFound().build();
         }
-        // TODO - product validation - REST API
         productMongoInstance = product;
         productsRepository.save(productMongoInstance);
         return ResponseEntity.ok(product);
     }
 
-    @DeleteMapping(path = "/products/{id}", produces = MediaType.APPLICATION_JSON_VALUE, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @DeleteMapping(path = "/products/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity deleteProduct(@PathVariable("id") String id) {
         Product product = productsRepository.findOne(id);
         if (product == null){

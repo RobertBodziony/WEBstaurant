@@ -62,7 +62,7 @@ public class UsersService {
 
   public ResponseEntity deleteUser(String id) {
     URI uri = UriComponentsBuilder.fromUriString(restApiProperties.getDataApiUrl())
-            .pathSegment(USERS_PATH)
+            .pathSegment(USERS_PATH,id)
             .build().toUri();
 
     return restTemplate.exchange(uri, HttpMethod.DELETE, HttpEntity.EMPTY, User.class);

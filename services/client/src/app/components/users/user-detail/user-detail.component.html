@@ -1,0 +1,68 @@
+<div *ngIf="user" class="container">
+  <form class="form">
+    <h1 class="h3 mb-3 font-weight-normal">User details - {{user.username}}</h1>
+    <div class="container align-self-stretch" style="width: available">
+      <!--<div *ngIf="((name.invalid && (name.dirty || name.touched)) ||-->
+      <!--(description.invalid && (description.dirty || description.touched)) ||-->
+      <!--(product.price <= 0)) && submitted"-->
+      <!--class="alert alert-danger"> Invalid input format.-->
+      <!--</div>-->
+    </div>
+    <div class="form-row">
+      <div class="col-lg-6">
+        <div class="form-row">
+          <div class="col">
+            <label for="inputName" class="align-baseline mt-1">Username</label>
+            <input name="inputName" [(ngModel)]="user.username" type="text" disabled="{{!editView}}"
+                   id="inputName" class="form-control" placeholder="Username" value="{{user.username}}" minlength="4" required autofocus>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <label for="userPassword" class="align-baseline mt-1">Password</label>
+            <input name="userPassword" [(ngModel)]="user.password" type="password" disabled="{{!editView}}"
+                   id="userPassword" class="form-control" placeholder="Password" value="{{user.password}}" minlength="1" required autofocus>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col mt-1">
+            <label for="inputFirstName" class="align-baseline mt-1">First name</label>
+            <input name="inputFirstName" [(ngModel)]="user.firstName" type="text" disabled="{{!editView}}"
+                   id="inputFirstName" class="form-control" placeholder="First name" value="{{user.firstName}}" minlength="4" required autofocus>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <label for="userLastName" class="align-baseline mt-1">Last name</label>
+            <input name="userLastName" [(ngModel)]="user.lastName" type="text" disabled="{{!editView}}"
+                   id="userLastName" class="form-control" placeholder="Last name" value="{{user.lastName}}" minlength="1" required autofocus>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-row">
+          <div class="col">
+            <label for="userEmail" class="align-baseline mt-1">Email</label>
+            <input name="email" [(ngModel)]="user.email" type="email" disabled="{{!editView}}"
+                   id="userEmail" class="form-control" placeholder="Email" value="{{user.email}}" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <label for="userRank" class="align-baseline mt-1">User rank</label>
+            <!--<img id="userRank" src="../../assets/images/rank.png">-->
+            <p class="text-center" id="userRank">Here will be the user rank</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-row">
+          <div class="col">
+            <button *ngIf="!editView" class="btn btn-outline-dark btn-block mt-3" type="submit" (click)="edit()">EDIT</button>
+            <button *ngIf="editView" class="btn btn-outline-dark btn-block mt-3" type="submit" (click)="update()">UPDATE</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

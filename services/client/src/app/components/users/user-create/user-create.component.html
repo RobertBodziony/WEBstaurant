@@ -1,0 +1,58 @@
+<div *ngIf="user" class="container">
+  <form class="form">
+    <h1 class="h3 mb-3 font-weight-normal">Create user</h1>
+    <div class="container align-self-stretch" style="width: available">
+      <!--<div *ngIf="((name.invalid && (name.dirty || name.touched)) ||-->
+       <!--(description.invalid && (description.dirty || description.touched)) ||-->
+       <!--(product.price <= 0)) && submitted"-->
+           <!--class="alert alert-danger"> Invalid input format.-->
+      <!--</div>-->
+    </div>
+    <div class="form-row">
+      <div class="col-lg-6">
+        <div class="form-row">
+          <div class="col mt-1">
+            <label for="inputName" class="align-baseline mt-1">Username</label>
+            <input name="inputName" [(ngModel)]="user.username" type="text"
+                   id="inputName" class="form-control" placeholder="Username" value="{{user.username}}" minlength="4" required autofocus>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <label for="userPassword" class="align-baseline mt-1">Password</label>
+            <input name="userPassword" [(ngModel)]="user.password" type="password"
+                   id="userPassword" class="form-control" placeholder="Password" value="{{user.password}}" minlength="1" required autofocus>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <label for="userRePassword" class="align-baseline mt-1">Confirm Password</label>
+            <input name="userRePassword" [(ngModel)]="rePassword" type="password"
+                   id="userRePassword" class="form-control" placeholder="Confirm Password" value="{{rePassword}}" minlength="1" required autofocus>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="col">
+            <label for="userEmail" class="align-baseline mt-1">Email</label>
+            <input name="email" [(ngModel)]="user.email" type="email"
+                   id="userEmail" class="form-control" placeholder="Email" required>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-6">
+        <div class="form-row">
+          <div class="col">
+            TO JEST COL-LG-6
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-12">
+        <div class="form-row">
+          <div class="col">
+            <button class="btn btn-outline-dark btn-block mt-3" type="submit" (click)="createUser()">Create</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

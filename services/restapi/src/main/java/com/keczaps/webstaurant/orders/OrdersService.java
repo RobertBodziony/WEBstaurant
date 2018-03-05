@@ -62,7 +62,7 @@ public class OrdersService {
 
   public ResponseEntity deleteOrder(String id) {
     URI uri = UriComponentsBuilder.fromUriString(restApiProperties.getDataApiUrl())
-            .pathSegment(ORDERS_PATH)
+            .pathSegment(ORDERS_PATH,id)
             .build().toUri();
 
     return restTemplate.exchange(uri, HttpMethod.DELETE, HttpEntity.EMPTY, Order.class);
